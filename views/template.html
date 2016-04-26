@@ -10,12 +10,10 @@
 		<li class="{{ result.partycode }}">{{ result.partycode | partyname }} {{ result.totalseats }} {% if result.changeheld %}({{ result.changeheld }}){% endif %}</li>
 	{% endfor %}</ul>
 </div>
+{% set resultData = mayor%}
+{% include "mayoral.html" %}
 
-<div>
-	<ul>{% for result in mayor %}
-		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
-	{% endfor %}</ul>
-</div>
+
 
 <div>
 	<ul>{% for result in nIreland %}

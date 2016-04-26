@@ -1,0 +1,7 @@
+start mayor
+<div>
+	<ul>{% for result in resultData %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
+	{% endfor %}</ul>
+</div>
+end mayor
