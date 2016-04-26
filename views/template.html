@@ -1,21 +1,217 @@
 <style type="text/css">
+	.party .logo {
+    width: 40px;
+    height: 40px;
+  }
+  .widget__results {
+  	position: relative;
+    width: 600px;
+    font-family: sans-serif;
+  }
+  .results {
+    box-sizing: border-box;
+    width: 100%;
+    height: 130px;
+    padding-top: 8px;
+  } 
+  .labels {
+    margin-left: 157px;
+    text-align: right;
+    float: left;
+    display: inline-block;
+    width: 110px;
+  }
+  .labels__title {
+    font-size: 19px;
+    line-height: 24px;
+    color: #333333;
+  }
+  .labels__seats,
+  .labels__councils {
+    color: #74736c;
+    font-size: 12px;
+  }
+  .labels__seats{
+    margin-top: 22px;
+  }
+  .labels__councils {
+    margin-top: 16px;
+  }
+  .england .labels__seats{
+    margin-top: 10px;
+  }
+  .england .labels__councils {
+    margin-top: 16px;
+  }
+  .labels__seats--label {
+    color: #a7a59b;
+    font-size: 10px;
+    display: block;
+  }
+  .party {
+    float: left;
+    display: inline-block;
+    margin-left: 24px;
+    margin-top: 7px;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: right;
+  }
+ 	.party .fig1 {
+    margin-top: 16px;
+  }
+  .party .fig2 {
+    margin-top: 6px;
+  }
+  .party .fig1,
+  .party .fig2 {
+  	padding-right: 4px;
+  }
 	{% for party in parties %}
-	.{{ party.paabbreviation }} {
+	.party__{{ party.paabbreviation }} .logo{
+    background: url({{ party.logo }}) no-repeat;
+  }
+	.party__{{ party.paabbreviation }} {
 		color: {{party.primarycolor}};
 	}{% endfor %}
+	
+	{% for card in cards %}
+	.{{ card.election }} {
+      background: #fff6eb url({{ card.image }}) 5px 8px no-repeat;
+	}{% endfor %}
+
+	.london {
+    background-position: 5px 30px;
+  }
+  .london__mayor {
+    background-position: 0 0;
+	}  	
+	.party__oth .logo:before {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 24px;
+    line-height: 63px;
+    content: 'Other';
+  }
+	.rule {
+    position: absolute;
+    width: 424px;
+    left: 170px;
+    top: 98px;
+    border-bottom: 1px dotted #cec6b9;
+  }
+  .linkbar {
+    box-sizing: border-box;
+    width: 100%;
+    height: 25px;
+    background-color: #eeeeee;
+    border-bottom: 2px solid #dcd5cd;
+    padding-top: 5px;
+    padding-right: 5px;
+    transition: background-color 0.3s;
+  }
+  .linkbar:hover {
+    background-color: #dddddd;
+    transition: background-color 0s;
+  }
+
+  .linkbar p {
+    margin: 0;
+    padding: 0;
+  }
+  .linkbar p.timestamp {
+    float: left;
+    font-size: 10px;
+    color: #a7a59b;
+    margin-left: 157px;
+    width: 110px;
+    text-align: right;
+  }
+  .linkbar p.link {
+    float: right;
+    font-size: 12px;
+    color: #528f9b;
+  }
+  .linkbar p.link:after {
+    content: " ";
+    background: url('https://image.webservices.ft.com/v1/images/raw/fticon:arrow-right?height=15&tint=27757b,27757b&source=ig_wrr') no-repeat center center;
+    background-size: 15px 15px;
+    float: right;
+    width: 15px;
+    height: 15px;
+  }
+	/* Rules for London Mayor */
+	.london__mayor .rule,
+	.london__mayor .party,
+	.london__mayor .labels__councils {
+	  display: none;
+	}
+	.london__mayor .labels__seats {
+	  margin-top: 6px;
+	}
+	.candidate {
+	  display: none;
+	}
+	.london__mayor .candidate {
+	  display: inline-block;
+	  margin-top: 55px;
+	  margin-left: 14px;
+	}
+	.candidate__name {
+	  font-size: 12px;
+	  color: #74736c;
+	}
+	.candidate__vote {
+	  font-size: 21px;
+	  font-weight: bold;
+	}
+
+	.candidate__khan {
+	  float: left;
+	}
+	.candidate__goldsmith {
+	  float: right;
+	  text-align: right;
+	  margin-right: 8px;
+	}
 </style>
 
-<div>
+<!-- <div>
 	<ul>{% for result in councils %}
 		<li class="{{ result.partycode }}">{{ result.partycode | partyname }} {{ result.totalseats }} {% if result.changeheld %}({{ result.changeheld }}){% endif %}</li>
 	{% endfor %}</ul>
-</div>
+</div> -->
+{% set resultData = councils%}
+{% set electionclass = "england"%}
+{% include "england.html" %}
+
+{% set resultData = wales%}
+{% set electionclass = "wales"%}
+{% include "assembly.html" %}
+
+{% set resultData = scotland%}
+{% set electionclass = "scotland"%}
+{% include "assembly.html" %}
+
+{% set resultData = nIreland%}
+{% set electionclass = "nireland"%}
+{% include "assembly.html" %}
+
+{% set resultData = londonAssembly%}
+{% set electionclass = "london"%}
+{% include "assembly.html" %}
+
 {% set resultData = mayor%}
+{% set electionclass = "london__mayor"%}
 {% include "mayoral.html" %}
 
 
+<!-- {% set resultData = scotland%}
+{% include "assembly.html" %} -->
 
-<div>
+
+
+<!-- <div>
 	<ul>{% for result in nIreland %}
 		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
 	{% endfor %}</ul>
@@ -37,7 +233,7 @@
 	<ul>{% for result in scotland %}
 		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
 	{% endfor %}</ul>
-</div>
+</div> -->
 
 <script type="text/javascript">
 

@@ -1,109 +1,649 @@
 <style type="text/css">
+	.party .logo {
+    width: 40px;
+    height: 40px;
+  }
+  .widget__results {
+  	position: relative;
+    width: 600px;
+    font-family: sans-serif;
+  }
+  .results {
+    box-sizing: border-box;
+    width: 100%;
+    height: 130px;
+    padding-top: 8px;
+  } 
+  .labels {
+    margin-left: 157px;
+    text-align: right;
+    float: left;
+    display: inline-block;
+    width: 110px;
+  }
+  .labels__title {
+    font-size: 19px;
+    line-height: 24px;
+    color: #333333;
+  }
+  .labels__seats,
+  .labels__councils {
+    color: #74736c;
+    font-size: 12px;
+  }
+  .labels__seats{
+    margin-top: 22px;
+  }
+  .labels__councils {
+    margin-top: 16px;
+  }
+  .england .labels__seats{
+    margin-top: 10px;
+  }
+  .england .labels__councils {
+    margin-top: 16px;
+  }
+  .labels__seats--label {
+    color: #a7a59b;
+    font-size: 10px;
+    display: block;
+  }
+  .party {
+    float: left;
+    display: inline-block;
+    margin-left: 24px;
+    margin-top: 7px;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: right;
+  }
+ 	.party .fig1 {
+    margin-top: 16px;
+  }
+  .party .fig2 {
+    margin-top: 6px;
+  }
+  .party .fig1,
+  .party .fig2 {
+  	padding-right: 4px;
+  }
 	
-	.ukip {
-		color: #FF00FF;
+	.party__ukip .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/ukip.png) no-repeat;
+  }
+	.party__ukip {
+		color: #a34198;
 	}
-	.ind {
-		color: #AAA;
+	.party__ind .logo{
+    background: url() no-repeat;
+  }
+	.party__ind {
+		color: #74736c;
 	}
-	.c {
-		color: #00F;
+	.party__c .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/c.png) no-repeat;
+  }
+	.party__c {
+		color: #1369bf;
 	}
-	.lab {
-		color: #F00;
+	.party__lab .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/lab.png) no-repeat;
+  }
+	.party__lab {
+		color: #bf1f1f;
 	}
-	.green {
+	.party__green .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/ukip.png) no-repeat;
+  }
+	.party__green {
 		color: #0F0;
 	}
-	.ld {
-		color: #FF0;
+	.party__ld .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/ld.png) no-repeat;
+  }
+	.party__ld {
+		color: #c68024;
 	}
-	.r {
+	.party__r .logo{
+    background: url() no-repeat;
+  }
+	.party__r {
 		color: #aaa;
 	}
-	.lib {
+	.party__lib .logo{
+    background: url() no-repeat;
+  }
+	.party__lib {
 		color: #0FF;
 	}
-	.noc {
+	.party__noc .logo{
+    background: url() no-repeat;
+  }
+	.party__noc {
 		color: #aaa;
 	}
-	.uup {
-		color: ;
+	.party__uup .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/uup.png) no-repeat;
+  }
+	.party__uup {
+		color: #1369bf;
 	}
-	.dup {
-		color: ;
+	.party__dup .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/dup.png) no-repeat;
+  }
+	.party__dup {
+		color: #443e71;
 	}
-	.sdlp {
-		color: ;
+	.party__sdlp .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/sdlp.png) no-repeat;
+  }
+	.party__sdlp {
+		color: #9cb157;
 	}
-	.sf {
-		color: ;
+	.party__sf .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/sf.png) no-repeat;
+  }
+	.party__sf {
+		color: #6a8d32;
 	}
-	.pc {
-		color: ;
+	.party__pc .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/pc.png) no-repeat;
+  }
+	.party__pc {
+		color: #54a19c;
 	}
-	.snp {
-		color: ;
+	.party__snp .logo{
+    background: url(https://ig.ft.com/static/sites/uk-election-results-may-2016/snp.png) no-repeat;
+  }
+	.party__snp {
+		color: #99891b;
+	}
+	.party__oth .logo{
+    background: url() no-repeat;
+  }
+	.party__oth {
+		color: #74736c;
+	}
+	
+	
+	.england {
+      background: #fff6eb url(https://ig.ft.com/static/sites/uk-election-results-may-2016/england.png) 5px 8px no-repeat;
+	}
+	.wales {
+      background: #fff6eb url(https://ig.ft.com/static/sites/uk-election-results-may-2016/wales.png) 5px 8px no-repeat;
+	}
+	.scotland {
+      background: #fff6eb url(https://ig.ft.com/static/sites/uk-election-results-may-2016/scotland.png) 5px 8px no-repeat;
+	}
+	.nireland {
+      background: #fff6eb url(https://ig.ft.com/static/sites/uk-election-results-may-2016/nireland.png) 5px 8px no-repeat;
+	}
+	.london {
+      background: #fff6eb url(https://ig.ft.com/static/sites/uk-election-results-may-2016/london.png) 5px 8px no-repeat;
+	}
+	.london__mayor {
+      background: #fff6eb url(https://ig.ft.com/static/sites/uk-election-results-may-2016/london-mayor.png) 5px 8px no-repeat;
+	}
+
+	.london {
+    background-position: 5px 30px;
+  }
+  .london__mayor {
+    background-position: 0 0;
+	}  	
+	.party__oth .logo:before {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 24px;
+    line-height: 63px;
+    content: 'Other';
+  }
+	.rule {
+    position: absolute;
+    width: 424px;
+    left: 170px;
+    top: 98px;
+    border-bottom: 1px dotted #cec6b9;
+  }
+  .linkbar {
+    box-sizing: border-box;
+    width: 100%;
+    height: 25px;
+    background-color: #eeeeee;
+    border-bottom: 2px solid #dcd5cd;
+    padding-top: 5px;
+    padding-right: 5px;
+    transition: background-color 0.3s;
+  }
+  .linkbar:hover {
+    background-color: #dddddd;
+    transition: background-color 0s;
+  }
+
+  .linkbar p {
+    margin: 0;
+    padding: 0;
+  }
+  .linkbar p.timestamp {
+    float: left;
+    font-size: 10px;
+    color: #a7a59b;
+    margin-left: 157px;
+    width: 110px;
+    text-align: right;
+  }
+  .linkbar p.link {
+    float: right;
+    font-size: 12px;
+    color: #528f9b;
+  }
+  .linkbar p.link:after {
+    content: " ";
+    background: url('https://image.webservices.ft.com/v1/images/raw/fticon:arrow-right?height=15&tint=27757b,27757b&source=ig_wrr') no-repeat center center;
+    background-size: 15px 15px;
+    float: right;
+    width: 15px;
+    height: 15px;
+  }
+	/* Rules for London Mayor */
+	.london__mayor .rule,
+	.london__mayor .party,
+	.london__mayor .labels__councils {
+	  display: none;
+	}
+	.london__mayor .labels__seats {
+	  margin-top: 6px;
+	}
+	.candidate {
+	  display: none;
+	}
+	.london__mayor .candidate {
+	  display: inline-block;
+	  margin-top: 55px;
+	  margin-left: 14px;
+	}
+	.candidate__name {
+	  font-size: 12px;
+	  color: #74736c;
+	}
+	.candidate__vote {
+	  font-size: 21px;
+	  font-weight: bold;
+	}
+
+	.candidate__khan {
+	  float: left;
+	}
+	.candidate__goldsmith {
+	  float: right;
+	  text-align: right;
+	  margin-right: 8px;
 	}
 </style>
 
-<div>
+<!-- <div>
 	<ul>
 		<li class="ukip">UK Independence party 140 </li>
-	
-		<li class="ind">Independent/other 248 </li>
 	
 		<li class="c">Conservative 2182 </li>
 	
 		<li class="lab">Labour 3003 </li>
 	
-		<li class="green">Green party 85 </li>
-	
 		<li class="ld">Liberal Democrat 687 </li>
 	
-		<li class="r">Ratepayers or Residents 33 </li>
+		<li class="oth">Other 213 </li>
 	
-		<li class="lib">Liberal 6 </li>
-	
-		<li class="noc">No overall control  </li>
-	
-		<li class="">  </li>
+		<li class="ind">Independent/other 248 </li>
 	</ul>
+</div> -->
+
+
+<div class="widget__results">
+  <div class="results england">
+    <div class="labels">
+      <div class="labels__title">English local authorities</div>
+      <div class="labels__seats">Seats</div>
+      <div class="labels__seats--label">point to counter</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="party party__ukip">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__c">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__lab">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__ld">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__oth">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__ind">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="rule"></div>
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
 </div>
 
-start mayor
-<div>
-	<ul>
-		<li class="green">Green party</li>
-	
-		<li class="bnp">bnp</li>
-	
-		<li class="res">res</li>
-	
-		<li class="bf">bf</li>
-	
-		<li class="c">Conservative</li>
-	
-		<li class="cista">cista</li>
-	
-		<li class="lab">Labour</li>
-	
-		<li class="olp">olp</li>
-	
-		<li class="ld">Liberal Democrat</li>
-	
-		<li class="we">we</li>
-	
-		<li class="ukip">UK Independence party</li>
-	
-		<li class="ind">Independent/other</li>
-	</ul>
+
+
+
+<div class="widget__results">
+  <div class="results wales">
+    <div class="labels">
+      <div class="labels__title">Assembly for Wales</div>
+      <div class="labels__seats">Total seats</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="party party__c">
+      <div class="logo"></div>
+      <div class="fig1">31</div>
+      <div class="fig2">15</div>
+    </div>
+    
+    <div class="party party__lab">
+      <div class="logo"></div>
+      <div class="fig1">16</div>
+      <div class="fig2">-6</div>
+    </div>
+    
+    <div class="party party__ld">
+      <div class="logo"></div>
+      <div class="fig1">12</div>
+      <div class="fig2">2</div>
+    </div>
+    
+    <div class="party party__pc">
+      <div class="logo"></div>
+      <div class="fig1">8</div>
+      <div class="fig2">-</div>
+    </div>
+    
+    <div class="party party__oth">
+      <div class="logo"></div>
+      <div class="fig1">3</div>
+      <div class="fig2">-</div>
+    </div>
+    
+    <div class="rule"></div>
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
 </div>
-end mayor
 
 
 
-<div>
+
+<div class="widget__results">
+  <div class="results scotland">
+    <div class="labels">
+      <div class="labels__title">Scottish parliament</div>
+      <div class="labels__seats">Total seats</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="party party__snp">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__lab">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__c">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__ld">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__oth">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="rule"></div>
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
+</div>
+
+
+
+
+<div class="widget__results">
+  <div class="results nireland">
+    <div class="labels">
+      <div class="labels__title">N. Ireland assembly</div>
+      <div class="labels__seats">Total seats</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="party party__dup">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__sf">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__uup">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__sdlp">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__oth">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="rule"></div>
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
+</div>
+
+
+
+
+<div class="widget__results">
+  <div class="results london">
+    <div class="labels">
+      <div class="labels__title">London assembly</div>
+      <div class="labels__seats">Total seats</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="party party__ld">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__c">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__lab">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__ukip">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="rule"></div>
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
+</div>
+
+
+
+
+<div class="widget__results">
+  <div class="results london__mayor">
+    <div class="labels">
+      <div class="labels__title">London mayoral</div>
+      <div class="labels__seats">Share of vote</div>
+      <div class="labels__seats--label">first round (over 50% to win)</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="candidate candidate__Khan">
+      <div class="candidate__name">Khan</div>
+      <div class="candidate__vote party__lab">58%</div>
+    </div>
+    
+    <div class="candidate candidate__Goldsmith">
+      <div class="candidate__name">Goldsmith</div>
+      <div class="candidate__vote party__c">42%</div>
+    </div>
+    
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
+</div>
+
+
+
+<!-- 
+<div class="widget__results">
+  <div class="results london__mayor">
+    <div class="labels">
+      <div class="labels__title">London mayoral</div>
+      <div class="labels__seats">Total seats</div>
+      <div class="labels__councils">Councils</div>
+    </div>
+    
+    <div class="party party__snp">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__lab">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__c">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__ld">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="party party__oth">
+      <div class="logo"></div>
+      <div class="fig1"></div>
+      <div class="fig2"></div>
+    </div>
+    
+    <div class="rule"></div>
+  </div>
+  <a href="http://www.ft.com">
+    <div class="linkbar">
+      <p class="timestamp">As of 07:31GMT</p>
+      <p class="link">Full coverage</p>
+    </div>
+  </a>
+
+</div>
+ -->
+
+
+
+<!-- <div>
 	<ul>
 		<li class="dup">Democratic Unionist Party</li>
 	
@@ -113,23 +653,13 @@ end mayor
 	
 		<li class="sdlp">Social Democrat and Labour party</li>
 	
-		<li class="ap">ap</li>
-	
-		<li class="ind">Independent/other</li>
-	
-		<li class="greenni">greenni</li>
-	
-		<li class="tuv">tuv</li>
-	
-		<li class="ukip">UK Independence party</li>
-	
-		<li class="ni21">ni21</li>
+		<li class="oth">Other</li>
 	</ul>
 </div>
 
 <div>
 	<ul>
-		<li class="cu">cu</li>
+		<li class="c">Conservative</li>
 	
 		<li class="lab">Labour</li>
 	
@@ -137,55 +667,19 @@ end mayor
 	
 		<li class="pc">Plaid Cymru</li>
 	
-		<li class="ukip">UK Independence party</li>
-	
-		<li class="ind">Independent/other</li>
-	
-		<li class="bnp">bnp</li>
-	
-		<li class="green">Green party</li>
-	
-		<li class="ichc">ichc</li>
-	
-		<li class="lib">Liberal</li>
-	
-		<li class="ra">ra</li>
-	
-		<li class="res">res</li>
-	
-		<li class="soc">soc</li>
-	
-		<li class="oth">oth</li>
-	
-		<li class="noc">No overall control</li>
+		<li class="oth">Other</li>
 	</ul>
 </div>
 
 <div>
 	<ul>
-		<li class="awp">awp</li>
-	
-		<li class="bf">bf</li>
-	
-		<li class="bnp">bnp</li>
-	
 		<li class="ld">Liberal Democrat</li>
 	
-		<li class="cpa">cpa</li>
-	
-		<li class="cpa">cpa</li>
-	
-		<li class="green">Green party</li>
+		<li class="c">Conservative</li>
 	
 		<li class="lab">Labour</li>
 	
-		<li class="res">res</li>
-	
-		<li class="thp">thp</li>
-	
 		<li class="ukip">UK Independence party</li>
-	
-		<li class="we">we</li>
 	</ul>
 </div>
 
@@ -199,31 +693,9 @@ end mayor
 	
 		<li class="ld">Liberal Democrat</li>
 	
-		<li class="green">Green party</li>
-	
-		<li class="ssp">ssp</li>
-	
-		<li class="ind">Independent/other</li>
-	
-		<li class="bnp">bnp</li>
-	
-		<li class="ichc">ichc</li>
-	
-		<li class="lib">Liberal</li>
-	
-		<li class="ra">ra</li>
-	
-		<li class="res">res</li>
-	
-		<li class="soc">soc</li>
-	
-		<li class="ukip">UK Independence party</li>
-	
-		<li class="oth">oth</li>
-	
-		<li class="noc">No overall control</li>
+		<li class="oth">Other</li>
 	</ul>
-</div>
+</div> -->
 
 <script type="text/javascript">
 

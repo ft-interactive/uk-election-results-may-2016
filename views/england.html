@@ -2,16 +2,18 @@
   <div class="results {{electionclass}}">
     <div class="labels">
       <div class="labels__title">{{ electionclass | cardtitle }}</div>
-      <div class="labels__seats">Share of vote</div>
-      <div class="labels__seats--label">first round (over 50% to win)</div>
+      <div class="labels__seats">Seats</div>
+      <div class="labels__seats--label">point to counter</div>
       <div class="labels__councils">Councils</div>
     </div>
     {% for result in resultData %}
-    <div class="candidate candidate__{{result.candidateshort}}">
-      <div class="candidate__name">{{result.candidateshort}}</div>
-      <div class="candidate__vote party__{{result.partycode}}">{{result.firstroundpercent}}%</div>
+    <div class="party party__{{result.partycode}}">
+      <div class="logo"></div>
+      <div class="fig1">{{result.seatchange}}</div>
+      <div class="fig2">{{result.councilchange}}</div>
     </div>
     {% endfor %}
+    <div class="rule"></div>
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">

@@ -14,6 +14,7 @@ if(config.bertha){
 		if (!err && response.statusCode == 200) {
 			var sheets = JSON.parse(body);
 			var partyLookup = makeLookup(sheets.parties, 'paabbreviation');
+			var cardLookup = makeLookup(sheets.cards, 'election');
 
 			nunjucks.configure('views', {
 			    autoescape: true
@@ -22,6 +23,20 @@ if(config.bertha){
 				console.log(code);
 				if(partyLookup[code]){ 
 					return partyLookup[code].name; 
+				}
+				return code			
+			})
+			.addFilter('partylogo', function(code){
+				console.log(code);
+				if(partyLookup[code]){ 
+					return partyLookup[code].logo; 
+				}
+				return code			
+			})
+			.addFilter('cardtitle', function(code){
+				console.log(code);
+				if(cardLookup[code]){ 
+					return cardLookup[code].title; 
 				}
 				return code			
 			});
