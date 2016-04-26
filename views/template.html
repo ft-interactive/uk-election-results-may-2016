@@ -1,0 +1,46 @@
+<style type="text/css">
+	{% for party in parties %}
+	.{{ party.paabbreviation }} {
+		color: {{party.primarycolor}};
+	}{% endfor %}
+</style>
+
+<div>
+	<ul>{% for result in councils %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }} {{ result.totalseats }} {% if result.changeheld %}({{ result.changeheld }}){% endif %}</li>
+	{% endfor %}</ul>
+</div>
+
+<div>
+	<ul>{% for result in mayor %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
+	{% endfor %}</ul>
+</div>
+
+<div>
+	<ul>{% for result in nIreland %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
+	{% endfor %}</ul>
+</div>
+
+<div>
+	<ul>{% for result in wales %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
+	{% endfor %}</ul>
+</div>
+
+<div>
+	<ul>{% for result in londonAssembly %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
+	{% endfor %}</ul>
+</div>
+
+<div>
+	<ul>{% for result in scotland %}
+		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
+	{% endfor %}</ul>
+</div>
+
+<script type="text/javascript">
+
+</script>
