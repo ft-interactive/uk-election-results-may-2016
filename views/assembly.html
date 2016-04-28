@@ -8,15 +8,15 @@
     {% for result in resultData %}
     <div class="party party__{{result.partycode}}">
       <div class="logo"></div>
-      <div class="fig1">{{result.numseats}}</div>
-      <div class="fig2">{{result.changeseats}}</div>
+      <div class="fig1">{{result.numseats | signed}}</div>
+      <div class="fig2">{{result.changeseats | signed}}</div>
     </div>
     {% endfor %}
     <div class="rule"></div>
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 07:31GMT</p>
+      <p class="timestamp">As of {{ date | fttimeformat}}</p>
       <p class="link">Full coverage</p>
     </div>
   </a>

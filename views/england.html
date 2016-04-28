@@ -3,21 +3,21 @@
     <div class="labels">
       <div class="labels__title">{{ electionclass | cardtitle }}</div>
       <div class="labels__seats">Seats</div>
-      <div class="labels__seats--label">point to counter</div>
+      <div class="labels__seats--label">{{ electionclass | cardsublabel }}</div>
       <div class="labels__councils">Councils</div>
     </div>
     {% for result in resultData %}
     <div class="party party__{{result.partycode}}">
       <div class="logo"></div>
-      <div class="fig1">{{result.seatchange}}</div>
-      <div class="fig2">{{result.councilchange}}</div>
+      <div class="fig1">{{result.seatchange | signed}}</div>
+      <div class="fig2">{{result.councilchange | signed}}</div>
     </div>
     {% endfor %}
     <div class="rule"></div>
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 07:31GMT</p>
+      <p class="timestamp">As of {{ date | fttimeformat}}</p>
       <p class="link">Full coverage</p>
     </div>
   </a>

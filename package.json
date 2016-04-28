@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js live",
+    "local": "node main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "d3-time-format": "^0.3.1",
     "nunjucks": "^2.4.2",
     "request": "^2.72.0"
   }
