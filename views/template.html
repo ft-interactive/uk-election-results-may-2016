@@ -174,6 +174,18 @@
 	  text-align: right;
 	  margin-right: 8px;
 	}
+
+	[data-show-index] {
+		display: none;
+	}
+	[data-show='0'] [data-show-index='0'],
+	[data-show='1'] [data-show-index='1'],
+	[data-show='2'] [data-show-index='2'],
+	[data-show='3'] [data-show-index='3'],
+	[data-show='4'] [data-show-index='4'],
+	[data-show='5'] [data-show-index='5'] {
+		display: block;
+	}
 </style>
 
 <!-- <div>
@@ -181,30 +193,39 @@
 		<li class="{{ result.partycode }}">{{ result.partycode | partyname }} {{ result.totalseats }} {% if result.changeheld %}({{ result.changeheld }}){% endif %}</li>
 	{% endfor %}</ul>
 </div> -->
-{% set resultData = councils%}
-{% set electionclass = "england"%}
-{% include "england.html" %}
 
-{% set resultData = wales%}
-{% set electionclass = "wales"%}
-{% include "assembly.html" %}
-
-{% set resultData = scotland%}
-{% set electionclass = "scotland"%}
-{% include "assembly.html" %}
-
-{% set resultData = nIreland%}
-{% set electionclass = "nireland"%}
-{% include "assembly.html" %}
-
-{% set resultData = londonAssembly%}
-{% set electionclass = "london"%}
-{% include "assembly.html" %}
-
-{% set resultData = mayor%}
-{% set electionclass = "london__mayor"%}
-{% include "mayoral.html" %}
-
+<div id="results-container" data-show="0">
+	<div data-show-index="0">
+		{% set resultData = councils%}
+		{% set electionclass = "england"%}
+		{% include "england.html" %}
+	</div>
+	<div data-show-index="1">
+		{% set resultData = wales%}
+		{% set electionclass = "wales"%}
+		{% include "assembly.html" %}
+	</div>
+	<div data-show-index="2">
+		{% set resultData = scotland%}
+		{% set electionclass = "scotland"%}
+		{% include "assembly.html" %}
+	</div>
+	<div data-show-index="3">
+		{% set resultData = nIreland%}
+		{% set electionclass = "nireland"%}
+		{% include "assembly.html" %}
+	</div>
+	<div data-show-index="4">
+		{% set resultData = londonAssembly%}
+		{% set electionclass = "london"%}
+		{% include "assembly.html" %}
+	</div>
+	<div data-show-index="5">
+		{% set resultData = mayor%}
+		{% set electionclass = "london__mayor"%}
+		{% include "mayoral.html" %}
+	</div>
+</div>
 
 <!-- {% set resultData = scotland%}
 {% include "assembly.html" %} -->
@@ -236,5 +257,14 @@
 </div> -->
 
 <script type="text/javascript">
-
+	(function(){
+	  setInterval(function(){
+	    function new_index(n) {
+	      return n >= 2 ? 0 : n + 1;
+	    }
+	    var el = document.getElementById('results-container');
+	    var current_index = parseInt(el.getAttribute('data-show'));
+	    el.setAttribute('data-show', new_index(current_index));
+	  }, 6000)
+	}())
 </script>

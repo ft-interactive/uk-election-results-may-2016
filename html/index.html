@@ -279,6 +279,18 @@
 	  text-align: right;
 	  margin-right: 8px;
 	}
+
+	[data-show-index] {
+		display: none;
+	}
+	[data-show='0'] [data-show-index='0'],
+	[data-show='1'] [data-show-index='1'],
+	[data-show='2'] [data-show-index='2'],
+	[data-show='3'] [data-show-index='3'],
+	[data-show='4'] [data-show-index='4'],
+	[data-show='5'] [data-show-index='5'] {
+		display: block;
+	}
 </style>
 
 <!-- <div>
@@ -297,8 +309,11 @@
 	</ul>
 </div> -->
 
-
-<div class="widget__results">
+<div id="results-container" data-show="0">
+	<div data-show-index="0">
+		
+		
+		<div class="widget__results">
   <div class="results england">
     <div class="labels">
       <div class="labels__title">English local authorities</div>
@@ -347,17 +362,18 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
 
 </div>
 
-
-
-
-<div class="widget__results">
+	</div>
+	<div data-show-index="1">
+		
+		
+		<div class="widget__results">
   <div class="results wales">
     <div class="labels">
       <div class="labels__title">Assembly for Wales</div>
@@ -399,17 +415,18 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
 
 </div>
 
-
-
-
-<div class="widget__results">
+	</div>
+	<div data-show-index="2">
+		
+		
+		<div class="widget__results">
   <div class="results scotland">
     <div class="labels">
       <div class="labels__title">Scottish parliament</div>
@@ -451,17 +468,18 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
 
 </div>
 
-
-
-
-<div class="widget__results">
+	</div>
+	<div data-show-index="3">
+		
+		
+		<div class="widget__results">
   <div class="results nireland">
     <div class="labels">
       <div class="labels__title">N. Ireland assembly</div>
@@ -503,17 +521,18 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
 
 </div>
 
-
-
-
-<div class="widget__results">
+	</div>
+	<div data-show-index="4">
+		
+		
+		<div class="widget__results">
   <div class="results london">
     <div class="labels">
       <div class="labels__title">London assembly</div>
@@ -549,17 +568,18 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
 
 </div>
 
-
-
-
-<div class="widget__results">
+	</div>
+	<div data-show-index="5">
+		
+		
+		<div class="widget__results">
   <div class="results london__mayor">
     <div class="labels">
       <div class="labels__title">London mayoral</div>
@@ -581,14 +601,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
 
 </div>
 
-
+	</div>
+</div>
 
 <!-- 
 <div class="widget__results">
@@ -633,7 +654,7 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 11:22am</p>
+      <p class="timestamp">As of 01:58pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -698,5 +719,14 @@
 </div> -->
 
 <script type="text/javascript">
-
+	(function(){
+	  setInterval(function(){
+	    function new_index(n) {
+	      return n >= 2 ? 0 : n + 1;
+	    }
+	    var el = document.getElementById('results-container');
+	    var current_index = parseInt(el.getAttribute('data-show'));
+	    el.setAttribute('data-show', new_index(current_index));
+	  }, 6000)
+	}())
 </script>

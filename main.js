@@ -4,8 +4,7 @@ var nunjucks = require('nunjucks');
 var d3time = require('d3-time-format');
 
 var fttimeformat = d3time.timeFormat("%I:%M%p");
-console.log(fttimeformat(new Date()));
-
+console.log('running at: ' + new Date());
 var config = JSON.parse(fs.readFileSync('config.json','utf-8'));
 
 var outputDir = config.htmlDir;
@@ -17,6 +16,9 @@ if(config.bertha){
 	request(config.bertha, function (err, response, body) {
 		if (!err && response.statusCode == 200) {
 			var sheets = JSON.parse(body);
+
+			sheets.wales = sheets.wales.sort(sortBy('numseats'));
+
 			var partyLookup = makeLookup(sheets.parties, 'paabbreviation');
 			var cardLookup = makeLookup(sheets.cards, 'election');
 
@@ -71,6 +73,13 @@ if(config.bertha){
 }else{
 	console.error(new Date() + " no bertha sheet specified");
 	exit(1);
+}
+
+function sortBy(key, f){
+	if(!f) f = function(x){ return Number(x); }
+	return function(a, b){
+		return f(b[key]) - f(a[key]);
+	}
 }
 
 
