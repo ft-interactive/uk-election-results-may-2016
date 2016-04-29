@@ -228,7 +228,7 @@
     float: left;
     font-size: 10px;
     color: #a7a59b;
-    margin-left: 157px;
+    margin-left: 32px;
     width: 110px;
     text-align: right;
   }
@@ -290,6 +290,37 @@
 	[data-show='4'] [data-show-index='4'],
 	[data-show='5'] [data-show-index='5'] {
 		display: block;
+	}
+	.slidenum {
+		float: left;
+		display: inline-block;
+		margin: -2px 0 0 30px;
+	}
+	.circle:before {
+		content: '●';
+		font-family: sans-serif;
+    display: inline-block;
+    line-height: 14px;
+    width: 12px;
+    color: #aaaaaa;
+	}
+	[data-show='0'] .circle:nth-child(n+2):before {
+		content: '○';
+	}
+	[data-show='1'] .circle:nth-child(n+3):before {
+		content: '○';
+	}
+	[data-show='2'] .circle:nth-child(n+4):before {
+		content: '○';
+	}
+	[data-show='3'] .circle:nth-child(n+5):before {
+		content: '○';
+	}
+	[data-show='4'] .circle:nth-child(n+6):before {
+		content: '○';
+	}
+	[data-show='5'] .circle:nth-child(n+7):before {
+		content: '○';
 	}
 </style>
 
@@ -362,7 +393,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -415,7 +454,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -468,7 +515,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -521,7 +576,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -568,7 +631,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -584,7 +655,7 @@
     <div class="labels">
       <div class="labels__title">London mayoral</div>
       <div class="labels__seats">Share of vote</div>
-      <div class="labels__seats--label">first round (over 50% to win)</div>
+      <div class="labels__seats--label">first round<br/>(over 50% to win)</div>
       <div class="labels__councils">Councils</div>
     </div>
     
@@ -601,7 +672,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -654,7 +733,15 @@
   </div>
   <a href="http://www.ft.com">
     <div class="linkbar">
-      <p class="timestamp">As of 01:58pm</p>
+      <div class="slidenum">
+        <span class="circle circle0"></span>
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+      </div>
+      <p class="timestamp">As of 05:27pm</p>
       <p class="link">Full coverage</p>
     </div>
   </a>
@@ -722,7 +809,7 @@
 	(function(){
 	  setInterval(function(){
 	    function new_index(n) {
-	      return n >= 2 ? 0 : n + 1;
+	      return n >= 5 ? 0 : n + 1;
 	    }
 	    var el = document.getElementById('results-container');
 	    var current_index = parseInt(el.getAttribute('data-show'));

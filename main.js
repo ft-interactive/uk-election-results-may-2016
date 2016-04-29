@@ -59,7 +59,7 @@ if(config.bertha){
 				return num;
 			});
 			
-			sheets.date = new Date();
+			sheets.date = new Date().setTime( new Date().getTime() + (60*60*1000) );
 
 			//render html
 			var html = nunjucks.render('template.html', sheets)

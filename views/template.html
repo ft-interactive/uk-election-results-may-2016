@@ -123,7 +123,7 @@
     float: left;
     font-size: 10px;
     color: #a7a59b;
-    margin-left: 157px;
+    margin-left: 32px;
     width: 110px;
     text-align: right;
   }
@@ -185,6 +185,37 @@
 	[data-show='4'] [data-show-index='4'],
 	[data-show='5'] [data-show-index='5'] {
 		display: block;
+	}
+	.slidenum {
+		float: left;
+		display: inline-block;
+		margin: -2px 0 0 30px;
+	}
+	.circle:before {
+		content: '●';
+		font-family: sans-serif;
+    display: inline-block;
+    line-height: 14px;
+    width: 12px;
+    color: #aaaaaa;
+	}
+	[data-show='0'] .circle:nth-child(n+2):before {
+		content: '○';
+	}
+	[data-show='1'] .circle:nth-child(n+3):before {
+		content: '○';
+	}
+	[data-show='2'] .circle:nth-child(n+4):before {
+		content: '○';
+	}
+	[data-show='3'] .circle:nth-child(n+5):before {
+		content: '○';
+	}
+	[data-show='4'] .circle:nth-child(n+6):before {
+		content: '○';
+	}
+	[data-show='5'] .circle:nth-child(n+7):before {
+		content: '○';
 	}
 </style>
 
@@ -260,7 +291,7 @@
 	(function(){
 	  setInterval(function(){
 	    function new_index(n) {
-	      return n >= 2 ? 0 : n + 1;
+	      return n >= 5 ? 0 : n + 1;
 	    }
 	    var el = document.getElementById('results-container');
 	    var current_index = parseInt(el.getAttribute('data-show'));
