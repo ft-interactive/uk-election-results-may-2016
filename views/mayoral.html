@@ -3,7 +3,7 @@
     <div class="labels">
       <div class="labels__title">{{ electionclass | cardtitle }}</div>
       <div class="labels__seats">Share of vote</div>
-      <div class="labels__seats--label">first round<br/>(over 50% to win)</div>
+      <div class="labels__seats--label">{{ electionclass | cardsublabel }}</div>
       <div class="labels__councils">Councils</div>
     </div>
     {% for result in resultData %}
