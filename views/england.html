@@ -1,33 +1,16 @@
-<div class="widget__results">
-  <div class="results {{electionclass}}">
-    <div class="labels">
-      <div class="labels__title">{{ electionclass | cardtitle }}</div>
-      <div class="labels__seats">Seats change</div>
-      <div class="labels__seats--label">{{ electionclass | cardsublabel }}</div>
-      <div class="labels__councils">Councils change</div>
-    </div>
-    {% for result in resultData %}
-    <div class="party party__{{result.partycode}}">
-      <div class="logo"></div>
-      <div class="fig1">{{result.seatchange | signed}}</div>
-      <div class="fig2">{{result.councilchange | signed}}</div>
-    </div>
-    {% endfor %}
-    <div class="rule"></div>
+<div class="results {{ election.election }}">
+  <div class="labels">
+    <div class="labels__title">{{ election.title }}</div>
+    <div class="labels__seats">Seats change</div>
+    <div class="labels__seats--label">{{ election.seatssublabel }}</div>
+    <div class="labels__councils">Councils change</div>
   </div>
-  <a href="http://www.ft.com">
-    <div class="linkbar">
-      <div class="slidenum">
-        <span class="circle circle0"></span>
-        <span class="circle circle1"></span>
-        <span class="circle circle2"></span>
-        <span class="circle circle3"></span>
-        <span class="circle circle4"></span>
-        <span class="circle circle5"></span>
-      </div>
-      <p class="timestamp">As of {{ date | fttimeformat}}</p>
-      <p class="link">Full coverage</p>
-    </div>
-  </a>
-
+  {% for result in election.results %}
+  <div class="party party__{{result.partycode}}">
+    <div class="logo"></div>
+    <div class="fig1">{{result.seatchange | changesign}}</div>
+    <div class="fig2">{{result.councilchange | changesign}}</div>
+  </div>
+  {% endfor %}
+  <div class="rule"></div>
 </div>

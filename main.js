@@ -17,10 +17,21 @@ if(config.bertha){
 		if (!err && response.statusCode == 200) {
 			var sheets = JSON.parse(body);
 
+			sheets.councils = sheets.councils.sort(sortBy('numseats'));
 			sheets.wales = sheets.wales.sort(sortBy('numseats'));
+			sheets.scotland = sheets.scotland.sort(sortBy('numseats'));
+			sheets.londonAssembly = sheets.londonAssembly.sort(sortBy('numseats'));
+			sheets.nIreland = sheets.nIreland.sort(sortBy('numseats'));
 
 			var partyLookup = makeLookup(sheets.parties, 'paabbreviation');
 			var cardLookup = makeLookup(sheets.cards, 'election');
+
+			sheets.elections = sheets.cards.map(function(row) {
+				row.results = sheets[row.sheet] || [];
+				return row;
+			}).filter(function(election) {
+				return election && election.enabled;
+			});
 
 			nunjucks.configure('views', {
 			    autoescape: true
@@ -37,24 +48,21 @@ if(config.bertha){
 				}
 				return code			
 			})
-			.addFilter('cardtitle', function(code){
-				if(cardLookup[code]){ 
-					return cardLookup[code].title; 
-				}
-				return code			
-			})
-			.addFilter('cardsublabel', function(code){
-				if(cardLookup[code]){ 
-					return cardLookup[code].seatssublabel; 
-				}
-				return code			
-			})
 			.addFilter('fttimeformat', function (date){
 				return fttimeformat(date).toLowerCase()
 			})
-			.addFilter('signed', function(num){
-				if(num>0){
-					return "+"+num;
+			.addFilter('changesign', function(num){
+				if (num === null) {
+					return '-';
+				}
+				if (num > 0){
+					return "+" + num;
+				}
+				return num;
+			})
+			.addFilter('totals', function(num){
+				if (num === null) {
+					return '-';
 				}
 				return num;
 			});
@@ -76,7 +84,7 @@ if(config.bertha){
 }
 
 function sortBy(key, f){
-	if(!f) f = function(x){ return Number(x); }
+	if(!f) f = function(x){ return x === null ? 1 : Number(x); }
 	return function(a, b){
 		return f(b[key]) - f(a[key]);
 	}

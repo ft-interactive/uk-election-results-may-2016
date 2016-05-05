@@ -51,7 +51,7 @@
   .party {
     float: left;
     display: inline-block;
-    margin-left: 24px;
+    margin-left: 20px;
     margin-top: 7px;
     font-size: 18px;
     font-weight: bold;
@@ -75,13 +75,13 @@
 		color: {{party.primarycolor}};
 	}{% endfor %}
 	
-	{% for card in cards %}
-	.{{ card.election }} {
-      background: #fff6eb url({{ card.image }}) 5px 8px no-repeat;
+	{% for election in elections %}
+	.{{ election.election }} {
+      background: #fff6eb url({{ election.image }}) 5px 8px no-repeat;
 	}{% endfor %}
 
 	.london {
-    background-position: 5px 30px;
+    background-position: 3px 30px;
   }
   .london__mayor {
     background-position: 0 0;
@@ -123,7 +123,6 @@
     float: left;
     font-size: 10px;
     color: #a7a59b;
-    margin-left: 32px;
     width: 110px;
     text-align: right;
   }
@@ -190,6 +189,7 @@
 		float: left;
 		display: inline-block;
 		margin: -2px 0 0 30px;
+		width: 127px;
 	}
 	.circle:before {
 		content: '●';
@@ -226,76 +226,33 @@
 </div> -->
 
 <div id="results-container" data-show="0">
-	<div data-show-index="0">
-		{% set resultData = councils%}
-		{% set electionclass = "england"%}
-		{% include "england.html" %}
+	{% for election in elections %}
+	<div data-show-index="{{ loop.index0 }}">
+		<div class="widget__results">
+			{% set election = election %}
+			{% include election.type + ".html" %}
+		  <a href="http://www.ft.com">
+		    <div class="linkbar">
+		      <div class="slidenum">{% if elections.length > 1 %}{% for i in elections -%}
+		        <span class="circle circle{{ loop.index0 }}"></span>
+		      {%- endfor %}{% endif %}</div>
+		      <p class="timestamp">As of {{ date | fttimeformat}}</p>
+		      <p class="link">Full coverage</p>
+		    </div>
+  		</a>
+		</div>
 	</div>
-	<div data-show-index="1">
-		{% set resultData = wales%}
-		{% set electionclass = "wales"%}
-		{% include "assembly.html" %}
-	</div>
-	<div data-show-index="2">
-		{% set resultData = scotland%}
-		{% set electionclass = "scotland"%}
-		{% include "assembly.html" %}
-	</div>
-	<div data-show-index="3">
-		{% set resultData = nIreland%}
-		{% set electionclass = "nireland"%}
-		{% include "assembly.html" %}
-	</div>
-	<div data-show-index="4">
-		{% set resultData = londonAssembly%}
-		{% set electionclass = "london"%}
-		{% include "assembly.html" %}
-	</div>
-	<div data-show-index="5">
-		{% set resultData = mayor%}
-		{% set electionclass = "london__mayor"%}
-		{% include "mayoral.html" %}
-	</div>
+	{% endfor %}
 </div>
-
-<!-- {% set resultData = scotland%}
-{% include "assembly.html" %} -->
-
-
-
-<!-- <div>
-	<ul>{% for result in nIreland %}
-		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
-	{% endfor %}</ul>
-</div>
-
-<div>
-	<ul>{% for result in wales %}
-		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
-	{% endfor %}</ul>
-</div>
-
-<div>
-	<ul>{% for result in londonAssembly %}
-		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
-	{% endfor %}</ul>
-</div>
-
-<div>
-	<ul>{% for result in scotland %}
-		<li class="{{ result.partycode }}">{{ result.partycode | partyname }}</li>
-	{% endfor %}</ul>
-</div> -->
-
-<script type="text/javascript">
+<script>
 	(function(){
+		function new_index(n) {
+	    return n >= {{ elections.length - 1 }} ? 0 : n + 1;
+	  }
 	  setInterval(function(){
-	    function new_index(n) {
-	      return n >= 5 ? 0 : n + 1;
-	    }
 	    var el = document.getElementById('results-container');
 	    var current_index = parseInt(el.getAttribute('data-show'));
 	    el.setAttribute('data-show', new_index(current_index));
-	  }, 6000)
+	  }, 5000)
 	}())
 </script>
