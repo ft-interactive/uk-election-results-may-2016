@@ -231,7 +231,7 @@
 		<div class="widget__results">
 			{% set election = election %}
 			{% include election.type + ".html" %}
-		  <a href="http://www.ft.com">
+		  <a href="{{ url }}">
 		    <div class="linkbar">
 		      <div class="slidenum">{% if elections.length > 1 %}{% for i in elections -%}
 		        <span class="circle circle{{ loop.index0 }}"></span>

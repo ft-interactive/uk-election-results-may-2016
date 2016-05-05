@@ -1,5 +1,5 @@
 {
-	"bertha":"http://bertha.ig.ft.com/republish/publish/ig/1slEKXyyAueYIWoWjC9ylGyszVhZbVKTMiPkl8KAz_wg/basic,parties,mayor,wales,scotland,londonAssembly,nIreland,councils,cards",
+	"bertha":"http://bertha.ig.ft.com/republish/publish/ig/1slEKXyyAueYIWoWjC9ylGyszVhZbVKTMiPkl8KAz_wg/basic,parties,mayor,wales,scotland,londonAssembly,nIreland,councils,cards,options",
 	"htmlDir":"html",
   "livehtmlDir": "/var/opt/customer/apps/interactive.ftdata.co.uk/var/www/html/sites/elections/2016/uk/may"
 }

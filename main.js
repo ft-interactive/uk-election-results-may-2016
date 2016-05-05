@@ -25,7 +25,7 @@ if(config.bertha){
 
 			var partyLookup = makeLookup(sheets.parties, 'paabbreviation');
 			var cardLookup = makeLookup(sheets.cards, 'election');
-
+			
 			sheets.elections = sheets.cards.map(function(row) {
 				row.results = sheets[row.sheet] || [];
 				return row;
@@ -51,6 +51,10 @@ if(config.bertha){
 			.addFilter('fttimeformat', function (date){
 				return fttimeformat(date).toLowerCase()
 			})
+			.addFilter('linkurl', function (url){
+				return url
+			})
+
 			.addFilter('changesign', function(num){
 				if (num === null) {
 					return '-';
@@ -68,6 +72,7 @@ if(config.bertha){
 			});
 			
 			sheets.date = new Date().setTime( new Date().getTime() + (60*60*1000) );
+			sheets.url = sheets.options.link;
 
 			//render html
 			var html = nunjucks.render('template.html', sheets)
